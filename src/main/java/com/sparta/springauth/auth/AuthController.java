@@ -19,7 +19,11 @@ import java.net.URLEncoder;
 @RequestMapping("/api")
 public class AuthController {
     public static final String AUTHORIZATION_HEADER = "Authorization";
-    private static final JwtUtil jwtUtil;
+    private final JwtUtil jwtUtil;
+
+    public AuthController(JwtUtil jwtUtil){
+        this.jwtUtil = jwtUtil;
+    }
     @GetMapping("/create-cookie")
     public String createCookie(HttpServletResponse res) {
         addCookie("Robbie Auth", res);
